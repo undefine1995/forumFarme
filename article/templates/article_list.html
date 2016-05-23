@@ -7,7 +7,8 @@
       <li><a href="{% url 'block_list' %}">Home</a></li>
       <li class="active">{{b.title}}</li>
     </ol>
-    <table class="table table-default">
+    <a class="btn btn-primary" href="{% url 'article_create' b.id %}">创建文章</a>
+    <table class="table table-default" style="margin-top:10px" >
       <tr>
         <th>状态</th>
         <th>标题</th>
@@ -19,7 +20,7 @@
         <th>{{article.get_status_display}}</th>
         <th>{{article.title}}</th>
         <th>{{article.ower}}</th>
-        <th>{{last_timestmp|date:'Y-m-d'}}</th>
+        <th>{{article.last_timestmp|date:'Y-m-d'}}</th>
       </tr>
       {% endfor %}
     </table>

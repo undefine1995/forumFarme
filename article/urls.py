@@ -5,4 +5,5 @@ from django.conf.urls import include, url
 
 urlpatterns = [
         url(r'^lists/(?P<block_id>\d+)', 'article.views.article_list', name = 'article_list'),
+        url(r'^create/(?P<block_id>\d+)','article.views.article_create', name = 'article_create'),
 ]
