@@ -32,3 +32,10 @@ def article_create(request, block_id):
         new_article.save()
         messages.add_message(request, messages.INFO, u'添加成功')
         return redirect(reverse('article_list',args=[b_id,]))
+
+def article_detail(request,article_id):
+    a_id = int(article_id)
+
+    article = Article.objects.get(id = a_id)
+    block = article.block
+    return render_to_response('article_detail.html',{"blo":block,"article":article},context_instance = RequestContext(request))

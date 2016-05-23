@@ -7,6 +7,13 @@
       <li><a href="{% url 'block_list' %}">Home</a></li>
       <li class="active">{{b.title}}</li>
     </ol>
+
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-info">{{message}}</div>
+      {% endfor %}
+    {% endif %}
+
     <a class="btn btn-primary" href="{% url 'article_create' b.id %}">创建文章</a>
     <table class="table table-default" style="margin-top:10px" >
       <tr>
@@ -17,7 +24,7 @@
       </tr>
       {% for article in articles %}
       <tr>
-        <th>{{article.get_status_display}}</th>
+              <th><a href="{% url 'article_detail' article.id %}">{{article.get_status_display}}</a></th>
         <th>{{article.title}}</th>
         <th>{{article.ower}}</th>
         <th>{{article.last_timestmp|date:'Y-m-d'}}</th>

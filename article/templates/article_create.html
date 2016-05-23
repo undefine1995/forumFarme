@@ -7,6 +7,13 @@
       <div class="alert alert-info">{{message}}</div>
     {% endfor %}
   {% endif %}
+  <div class="col-md-12">
+    <ol class="breadcrumb">
+      <li><a href="{% url 'block_list' %}">Home</a></li>
+      <li><a href="{% url 'article_list' blo.id %}">{{blo.title}}</a></li>
+      <li class="active">创建文章</li>
+    </ol>
+  </div>
 <form class="form-horizontal" action="" method='POST' >{% csrf_token %}
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">标题</label>
