@@ -3,6 +3,8 @@ from django.shortcuts import render_to_response,redirect
 from django.contrib.auth.models import User
 from django.template import RequestContext
 from django.core.urlresolvers import reverse
+
+import uuid
 # Create your views here.
 
 def user_register(request):
@@ -24,6 +26,11 @@ def user_register(request):
 
         if not error:
             user = User.objects.create_user(username=username, password=password,email=email)
+            user.is_active = false
+            user.save()
+
+            new_code = str(uuid.uuid4()).replace('-','')
+
 
         else:
             return render_to_response('usercenter_register.html',{'error':error},context_instance = RequestContext(request))
